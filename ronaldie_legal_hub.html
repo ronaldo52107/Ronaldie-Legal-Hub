@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ronaldie - Terms of Service & Privacy Policy</title>
+  
+  <!-- Title Bar Icon (Favicon) -->
+  <link rel="icon" type="image/jpeg" href="favicon.jpg">
+
+  <!-- Immediate Theme Check to Prevent FOUC (Flash of Unstyled Content) -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#312e81',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; font-size: 11pt; }
+      .legal-card { box-shadow: none !important; border: none !important; }
+      a { text-decoration: underline; color: black !important; }
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: rgba(148, 163, 184, 0.4);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .toc-link.active-toc {
+      color: #4f46e5;
+      font-weight: 600;
+      border-left: 2px solid #4f46e5;
+      background-color: rgba(99, 102, 241, 0.08);
+    }
+    .dark .toc-link.active-toc {
+      color: #818cf8;
+      border-left: 2px solid #818cf8;
+      background-color: rgba(99, 102, 241, 0.15);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen font-sans selection:bg-indigo-500 selection:text-white transition-colors duration-200">
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-40 w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md transition-colors no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo / Title -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl overflow-hidden shadow-md border border-slate-200 dark:border-slate-700 flex-shrink-0">
+          <img src="favicon.jpg" alt="Ronaldie Icon" class="w-full h-full object-cover">
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400">Ronaldie</span>
+            <span class="text-xs px-2 py-0.5 rounded-full font-medium bg-indigo-50 text-indigo-700 dark:bg-indigo-950/70 dark:text-indigo-300 border border-indigo-200/80 dark:border-indigo-800">Official</span>
+          </div>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400">Legal Agreement & Policy Portal</p>
+        </div>
+      </div>
+
+      <!-- Action Toolbar -->
+      <div class="flex items-center gap-2">
+        <!-- Theme Toggle -->
+        <button id="themeToggleBtn" aria-label="Toggle theme" class="p-2 rounded-lg text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i id="themeIcon" data-lucide="moon" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Share / Copy Link -->
+        <button id="shareBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition border border-slate-200 dark:border-slate-700">
+          <i data-lucide="share-2" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Share</span>
+        </button>
+
+        <!-- Print -->
+        <button id="printBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition border border-slate-200 dark:border-slate-700">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Print</span>
+        </button>
+
+        <!-- Copy Full Text -->
+        <button id="copyDocBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-sm transition active:scale-95">
+          <i data-lucide="copy" class="w-4 h-4"></i>
+          <span id="copyBtnText">Copy Text</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero & Document Control Banner -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 no-print">
+    <div class="bg-gradient-to-br from-indigo-900/5 via-slate-100/60 to-violet-900/5 dark:from-indigo-950/40 dark:via-slate-900/40 dark:to-violet-950/30 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-6 md:p-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 mb-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Current & Binding
+          </div>
+          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+            Terms of Service & Privacy Policy
+          </h1>
+          <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">
+            Please read these terms and privacy disclosures carefully to understand your rights, responsibilities, and how Ronaldie safeguards your data.
+          </p>
+          <div class="flex flex-wrap items-center gap-4 mt-3 text-xs text-slate-500 dark:text-slate-400">
+            <span class="flex items-center gap-1.5">
+              <i data-lucide="calendar" class="w-3.5 h-3.5 text-indigo-500"></i>
+              Last Updated: <strong class="text-slate-700 dark:text-slate-300">September 2026</strong>
+            </span>
+            <span class="flex items-center gap-1.5">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-indigo-500"></i>
+              Version: <strong class="text-slate-700 dark:text-slate-300">2.0 (Official)</strong>
+            </span>
+            <span class="flex items-center gap-1.5">
+              <i data-lucide="globe" class="w-3.5 h-3.5 text-indigo-500"></i>
+              Read-Only Public Record
+            </span>
+          </div>
+        </div>
+
+        <!-- Document Switcher Tabs -->
+        <div class="flex items-center p-1 bg-slate-200/80 dark:bg-slate-800/80 rounded-xl self-start md:self-auto border border-slate-300/80 dark:border-slate-700">
+          <button id="tabTos" class="doc-tab px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-lg transition-all shadow-sm bg-white dark:bg-indigo-600 text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+            <span>Terms of Service</span>
+          </button>
+          <button id="tabPrivacy" class="doc-tab px-4 py-2.5 text-xs sm:text-sm font-medium rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-2">
+            <i data-lucide="lock" class="w-4 h-4"></i>
+            <span>Privacy Policy</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Real-Time Search Bar -->
+      <div class="mt-6">
+        <div class="relative max-w-2xl">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search clauses (e.g., 'eligibility', 'data collection', 'cookies', 'termination', 'liability')..."
+            class="w-full pl-10 pr-9 py-2.5 text-sm rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition shadow-sm placeholder:text-slate-400 text-slate-900 dark:text-white"
+          >
+          <button id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <p id="searchStats" class="hidden mt-2 text-xs text-indigo-600 dark:text-indigo-400 font-medium"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Container with Sidebar -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 mb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Table of Contents Sidebar -->
+      <aside class="hidden lg:block lg:col-span-3 no-print">
+        <div class="sticky top-24 space-y-4">
+          <div class="p-4 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3 flex items-center gap-2">
+              <i data-lucide="list-ordered" class="w-4 h-4 text-indigo-500"></i> Sections on this page
+            </h2>
+            <nav id="tocNav" class="space-y-1 text-xs sm:text-sm max-h-[calc(100vh-280px)] overflow-y-auto custom-scrollbar pr-1">
+              <!-- Dynamically populated TOC links based on active tab -->
+            </nav>
+          </div>
+
+          <div class="p-4 rounded-xl border border-indigo-100 dark:border-indigo-950/60 bg-indigo-50/40 dark:bg-indigo-950/20 text-xs text-indigo-950 dark:text-indigo-200 space-y-2">
+            <div class="font-semibold flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400">
+              <i data-lucide="help-circle" class="w-4 h-4"></i> Need Direct Inquiries?
+            </div>
+            <p class="leading-relaxed">
+              For privacy requests, terms clarifications, or abuse reports, reach our team directly at <a href="mailto:ronaldo52107@gmail.com" class="underline font-medium hover:text-indigo-700 dark:hover:text-indigo-300">ronaldo52107@gmail.com</a>.
+            </p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Legal Body -->
+      <section class="lg:col-span-9" id="documentContainer">
+        
+        <!-- ==================== TERMS OF SERVICE ==================== -->
+        <article id="tosView" class="space-y-8 bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+          
+          <div class="border-b border-slate-200 dark:border-slate-800 pb-6">
+            <span class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold uppercase tracking-wider bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 mb-2">Legal Contract</span>
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Terms of Service</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">
+              Effective Date: September 2026. These Terms govern your relationship with and access to Ronaldie.
+            </p>
+          </div>
+
+          <!-- Clause 1 -->
+          <div class="legal-clause scroll-mt-24" id="tos-acceptance">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-indigo-500 font-mono text-base">1.</span> Acceptance of Terms
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              By accessing, integrating, installing, or interacting with <strong>Ronaldie</strong> ("the Service", "the Platform", "we", "us", or "our"), you confirm that you have read, understood, and agreed to be bound by these Terms of Service. If you do not agree to these terms, you must not access, install, or use the Service in any capacity.
+            </p>
+            <div class="mt-3 p-3.5 bg-slate-50 dark:bg-slate-800/60 border-l-4 border-indigo-500 text-xs sm:text-sm text-slate-600 dark:text-slate-300 rounded-r-lg">
+              <strong>Notice to Community Administrators:</strong> If you install Ronaldie within a server, organization, or group, you represent that you hold the necessary administrative authority to bind that group to these terms.
+            </div>
+          </div>
+
+          <!-- Clause 2 -->
+          <div class="legal-clause scroll-mt-24" id="tos-eligibility">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-indigo-500 font-mono text-base">2.</span> Eligibility & Age Requirements
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              To use Ronaldie, you must be at least <strong>13 years old</strong> (or meet the statutory minimum age of digital consent required in your country, such as 16 in certain jurisdictions of the European Economic Area). If you are under the legal age of majority in your jurisdiction, you confirm that you have obtained verifiable consent from a parent or legal guardian to access the Service.
+            </p>
+          </div>
+
+          <!-- Clause 3 -->
+          <div class="legal-clause scroll-mt-24" id="tos-accounts">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-indigo-500 font-mono text-base">3.</span> User Accounts & Security
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              When accessing Ronaldie via third-party authentication platforms (such as Discord, GitHub, or email authentication), you are solely responsible for maintaining the confidentiality and security of your credentials. You agree to notify Ronaldie immediately of any unauthorized use or security compromise regarding your account.
+            </p>
+          </div>
+
+          <!-- Clause 4 -->
+          <div class="legal-clause scroll-mt-24" id="tos-acceptable-use">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-indigo-500 font-mono text-base">4.</span> Acceptable Use & Conduct Guidelines
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              You agree to engage with the Service strictly in compliance with applicable laws and respectful community standards. You explicitly agree that you shall NOT:
+            </p>
+            <ul class="mt-2.5 space-y-2 list-disc list-inside text-sm sm:text-base text-slate-600 dark:text-slate-300">
+              <li>Engage in harassment, stalking, bullying, defamation, threats, or any form of unlawful intimidation.</li>
+              <li>Exploit, spam, flood, or trigger automated bot scripts intended to degrade server performance or circumvent rate limitations.</li>
+              <li>Reverse engineer, decompile, dissect, or attempt to extract the source code, API keys, or backend architecture of Ronaldie.</li>
+              <li>Distribute malware, phishing links, trojans, ransomware, or harmful computational scripts.</li>
+              <li>Violate the Terms of Service or Developer Community Guidelines of any parent platform (including Discord Developer Terms).</li>
+              <li>Misrepresent yourself as a member, developer, or official representative of Ronaldie.</li>
+            </ul>
+          </div>
+
+          <!-- Clause 5 -->
+          <div class="legal-clause scroll-mt-24" id="tos-ip">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-indigo-500 font-mono text-base">5.</span> Intellectual Property & User Content
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              <strong>Our Rights:</strong> All intellectual property rights, trademarks, branding, user interfaces, documentation, and underlying proprietary software powering Ronaldie remain the exclusive property of Ronaldie and its contributors.
+            </p>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              <strong>Your Content:</strong> You retain full ownership of any text, images, or assets you provide while using the Service. By submitting content through Ronaldie, you grant us a worldwide, non-exclusive, royalty-free license solely to host, cache, display, and process your content as required to deliver the Service to you.
+            </p>
+          </div>
+
+          <!-- Clause 6 -->
+          <div class="legal-clause scroll-mt-24" id="tos-third-party">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-indigo-500 font-mono text-base">6.</span> Third-Party Links & Services
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              The Service may display links or integrate with third-party websites and tools. Ronaldie does not endorse, control, or assume responsibility for any content, policies, or operations conducted by third-party services.
+            </p>
+          </div>
+
+          <!-- Clause 7 -->
+          <div class="legal-clause scroll-mt-24" id="tos-disclaimers">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-indigo-500 font-mono text-base">7.</span> Disclaimers & Limitation of Liability
+            </h3>
+            <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed uppercase">
+              RONALDIE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY LAW, RONALDIE AND ITS OPERATORS DISCLAIM ALL WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. UNDER NO CIRCUMSTANCES SHALL RONALDIE BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF DATA, GOODWILL, OR REVENUE.
+            </div>
+          </div>
+
+          <!-- Clause 8 -->
+          <div class="legal-clause scroll-mt-24" id="tos-termination">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-indigo-500 font-mono text-base">8.</span> Termination & Guild Blacklisting
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              We reserve the right to suspend, terminate, or indefinitely restrict access for any user, guild, or organization at our sole discretion, without prior notice or liability, in the event of any detected violation of these Terms, abusive behavior, or network exploitation.
+            </p>
+          </div>
+
+          <!-- Clause 9 -->
+          <div class="legal-clause scroll-mt-24" id="tos-disputes">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-indigo-500 font-mono text-base">9.</span> Governing Law & Dispute Resolution
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              These Terms shall be interpreted and governed in accordance with the applicable laws of your jurisdiction, without regard to conflicts of law principles. Any dispute arising under these Terms shall first be attempted to be resolved via good-faith informal negotiations.
+            </p>
+          </div>
+
+          <!-- Clause 10 -->
+          <div class="legal-clause scroll-mt-24" id="tos-modifications">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-indigo-500 font-mono text-base">10.</span> Modifications to Terms
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              We may revise these Terms occasionally to reflect feature additions, operational standards, or legal statutory requirements. The "Last Updated" date at the top of this document will always reflect the most recent revision. Continued use of Ronaldie constitutes full acceptance of updated terms.
+            </p>
+          </div>
+
+          <!-- Clause 11 -->
+          <div class="legal-clause scroll-mt-24" id="tos-contact">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-indigo-500 font-mono text-base">11.</span> Contact Details
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              If you have questions, feedback, or concerns regarding these Terms of Service, please reach out to us:
+            </p>
+            <div class="mt-3 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 text-sm space-y-1">
+              <p><strong>Entity:</strong> Ronaldie Operations Team</p>
+              <p><strong>Official Inquiries:</strong> <a href="mailto:ronaldo52107@gmail.com" class="text-indigo-600 dark:text-indigo-400 font-medium underline">ronaldo52107@gmail.com</a></p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== PRIVACY POLICY ==================== -->
+        <article id="privacyView" class="hidden space-y-8 bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
+          
+          <div class="border-b border-slate-200 dark:border-slate-800 pb-6">
+            <span class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold uppercase tracking-wider bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 mb-2">Transparency & Trust</span>
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Privacy Policy</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">
+              Effective Date: September 2026. This policy describes our strict data minimization principles and privacy commitments.
+            </p>
+          </div>
+
+          <!-- Privacy Clause 1 -->
+          <div class="legal-clause scroll-mt-24" id="priv-overview">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-emerald-500 font-mono text-base">1.</span> Overview & Commitment
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              Ronaldie is committed to safeguarding user confidentiality. We operate on a foundation of <strong>data minimization</strong>: we never collect extraneous personal details, we never profile users for targeted advertising, and we never sell user data to data brokers.
+            </p>
+          </div>
+
+          <!-- Privacy Clause 2 -->
+          <div class="legal-clause scroll-mt-24" id="priv-collection">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-emerald-500 font-mono text-base">2.</span> Information We Collect
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              We collect only the bare essentials needed to deliver reliable operations:
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4 mt-3">
+              <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40">
+                <div class="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-slate-100">
+                  <i data-lucide="hash" class="w-4 h-4 text-indigo-500"></i> Platform Identifiers
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+                  Numeric user IDs, guild/server IDs, and channel IDs necessary to remember server preferences, prefix settings, and command authorizations.
+                </p>
+              </div>
+              <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40">
+                <div class="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-slate-100">
+                  <i data-lucide="sliders" class="w-4 h-4 text-emerald-500"></i> Preference & Log State
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+                  Feature flags, custom prefixes, administrative role IDs, and ephemeral error logging to monitor stability and prevent crashes.
+                </p>
+              </div>
+            </div>
+            <p class="mt-3 text-xs text-slate-500 dark:text-slate-400 italic">
+              * Privacy Guarantee: Ronaldie does NOT harvest, scan, or retain normal chat logs, personal messages, or private media files.
+            </p>
+          </div>
+
+          <!-- Privacy Clause 3 -->
+          <div class="legal-clause scroll-mt-24" id="priv-usage">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-emerald-500 font-mono text-base">3.</span> How We Use Information
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              Collected information is strictly applied to:
+            </p>
+            <ul class="mt-2 space-y-1.5 list-disc list-inside text-sm sm:text-base text-slate-600 dark:text-slate-300">
+              <li>Persisting your custom server settings and configured bot roles across system reboots.</li>
+              <li>Detecting, mitigating, and blocking command flooding, spam loops, or API denial-of-service attempts.</li>
+              <li>Analyzing aggregated, non-personally identifiable usage statistics to guide development.</li>
+            </ul>
+          </div>
+
+          <!-- Privacy Clause 4 -->
+          <div class="legal-clause scroll-mt-24" id="priv-basis">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-emerald-500 font-mono text-base">4.</span> Legal Basis for Processing (GDPR)
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              Under international privacy regulations (including GDPR), we process minimal data based on:
+            </p>
+            <ul class="mt-2 space-y-1.5 list-disc list-inside text-sm sm:text-base text-slate-600 dark:text-slate-300">
+              <li><strong>Contractual Necessity:</strong> Delivering core bot features you or your server administrator requested.</li>
+              <li><strong>Legitimate Interests:</strong> Protecting the Service from malicious exploitation and maintaining continuous uptime.</li>
+            </ul>
+          </div>
+
+          <!-- Privacy Clause 5 -->
+          <div class="legal-clause scroll-mt-24" id="priv-sharing">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-emerald-500 font-mono text-base">5.</span> Sharing & Third Parties
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              We never sell or rent your data. Data is shared strictly with secure technical infrastructure providers (such as hosting and database cluster partners) essential to hosting Ronaldie, or in response to a legally binding subpoena, warrant, or court order.
+            </p>
+          </div>
+
+          <!-- Privacy Clause 6 -->
+          <div class="legal-clause scroll-mt-24" id="priv-rights">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-emerald-500 font-mono text-base">6.</span> User Rights (GDPR & CCPA)
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              Regardless of your physical location, you enjoy the right to:
+            </p>
+            <ul class="mt-2 space-y-1.5 list-disc list-inside text-sm sm:text-base text-slate-600 dark:text-slate-300">
+              <li>Request an export of any stored information linked to your account ID.</li>
+              <li>Request full, irreversible deletion of your data from our systems.</li>
+              <li>Object to or restrict specific forms of data processing.</li>
+            </ul>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              To exercise these rights, submit a request to <a href="mailto:ronaldo52107@gmail.com" class="underline text-indigo-600 dark:text-indigo-400 font-medium">ronaldo52107@gmail.com</a>. Requests are fulfilled within 30 days without cost.
+            </p>
+          </div>
+
+          <!-- Privacy Clause 7 -->
+          <div class="legal-clause scroll-mt-24" id="priv-children">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-emerald-500 font-mono text-base">7.</span> Children's Privacy
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              Ronaldie is not directed towards children under the age of 13. We do not knowingly collect personal identifiable information from children under 13. If you believe a child has provided us personal data, please contact us immediately so we can promptly delete the record.
+            </p>
+          </div>
+
+          <!-- Privacy Clause 8 -->
+          <div class="legal-clause scroll-mt-24" id="priv-updates">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-emerald-500 font-mono text-base">8.</span> Policy Updates
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              We may update this Privacy Policy from time to time. When significant revisions are published, we will update the effective date at the top of this document and provide a public notice where appropriate.
+            </p>
+          </div>
+
+          <!-- Privacy Clause 9 -->
+          <div class="legal-clause scroll-mt-24" id="priv-contact">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <span class="text-emerald-500 font-mono text-base">9.</span> Contact Us
+            </h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              If you have any questions, inquiries, or privacy concerns regarding this policy, please email:
+            </p>
+            <div class="mt-3 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 text-sm space-y-1">
+              <p><strong>Privacy Officer:</strong> Ronaldie Privacy & Security</p>
+              <p><strong>Email:</strong> <a href="mailto:ronaldo52107@gmail.com" class="text-indigo-600 dark:text-indigo-400 font-medium underline">ronaldo52107@gmail.com</a></p>
+            </div>
+          </div>
+        </article>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 py-8 no-print transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-lg overflow-hidden flex-shrink-0">
+          <img src="favicon.jpg" alt="R" class="w-full h-full object-cover">
+        </div>
+        <span>&copy; 2026 Ronaldie. All rights reserved. Strictly read-only legal record.</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#tos-acceptance" onclick="setTab('tos')" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Terms</a>
+        <a href="#priv-overview" onclick="setTab('privacy')" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Privacy</a>
+        <a href="mailto:ronaldo52107@gmail.com" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-3 rounded-xl shadow-xl flex items-center gap-2 text-sm font-medium">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 dark:text-emerald-600"></i>
+    <span id="toastMsg">Action complete</span>
+  </div>
+
+  <script>
+    // State management
+    let currentTab = 'tos';
+
+    // TOC mapping
+    const tocData = {
+      tos: [
+        { id: 'tos-acceptance', label: '1. Acceptance of Terms' },
+        { id: 'tos-eligibility', label: '2. Eligibility & Age' },
+        { id: 'tos-accounts', label: '3. Accounts & Security' },
+        { id: 'tos-acceptable-use', label: '4. Acceptable Use' },
+        { id: 'tos-ip', label: '5. Intellectual Property' },
+        { id: 'tos-third-party', label: '6. Third-Party Services' },
+        { id: 'tos-disclaimers', label: '7. Disclaimers & Liability' },
+        { id: 'tos-termination', label: '8. Termination' },
+        { id: 'tos-disputes', label: '9. Dispute Resolution' },
+        { id: 'tos-modifications', label: '10. Modifications' },
+        { id: 'tos-contact', label: '11. Contact Details' },
+      ],
+      privacy: [
+        { id: 'priv-overview', label: '1. Overview & Commitment' },
+        { id: 'priv-collection', label: '2. Information We Collect' },
+        { id: 'priv-usage', label: '3. How We Use Data' },
+        { id: 'priv-basis', label: '4. Legal Basis (GDPR)' },
+        { id: 'priv-sharing', label: '5. Sharing & Third Parties' },
+        { id: 'priv-rights', label: '6. User Rights (GDPR/CCPA)' },
+        { id: 'priv-children', label: "7. Children's Privacy" },
+        { id: 'priv-updates', label: '8. Policy Updates' },
+        { id: 'priv-contact', label: '9. Contact Us' },
+      ]
+    };
+
+    const tabTos = document.getElementById('tabTos');
+    const tabPrivacy = document.getElementById('tabPrivacy');
+    const tosView = document.getElementById('tosView');
+    const privacyView = document.getElementById('privacyView');
+    const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const searchStats = document.getElementById('searchStats');
+
+    // Build Table of Contents
+    function renderToc() {
+      const nav = document.getElementById('tocNav');
+      nav.innerHTML = '';
+      const list = tocData[currentTab];
+
+      list.forEach((item, index) => {
+        const link = document.createElement('a');
+        link.href = `#${item.id}`;
+        link.textContent = item.label;
+        link.dataset.targetId = item.id;
+        link.className = 'toc-link block py-1.5 px-3 rounded-lg text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition text-xs font-medium truncate';
+        if (index === 0) link.classList.add('active-toc');
+        nav.appendChild(link);
+      });
+      setupScrollSpy();
+    }
+
+    // ScrollSpy for Active TOC Highlighting
+    let observer;
+    function setupScrollSpy() {
+      if (observer) observer.disconnect();
+
+      const activeView = currentTab === 'tos' ? tosView : privacyView;
+      const clauses = activeView.querySelectorAll('.legal-clause');
+
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            document.querySelectorAll('#tocNav a').forEach(link => {
+              if (link.dataset.targetId === id) {
+                link.classList.add('active-toc');
+              } else {
+                link.classList.remove('active-toc');
+              }
+            });
+          }
+        });
+      }, {
+        rootMargin: '-80px 0px -70% 0px',
+        threshold: 0
+      });
+
+      clauses.forEach(clause => observer.observe(clause));
+    }
+
+    // Tab Switcher
+    function setTab(tab) {
+      currentTab = tab;
+      if (tab === 'tos') {
+        tosView.classList.remove('hidden');
+        privacyView.classList.add('hidden');
+        tabTos.className = 'doc-tab px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-lg transition-all shadow-sm bg-white dark:bg-indigo-600 text-slate-900 dark:text-white flex items-center gap-2';
+        tabPrivacy.className = 'doc-tab px-4 py-2.5 text-xs sm:text-sm font-medium rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-2';
+      } else {
+        privacyView.classList.remove('hidden');
+        tosView.classList.add('hidden');
+        tabPrivacy.className = 'doc-tab px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-lg transition-all shadow-sm bg-white dark:bg-indigo-600 text-slate-900 dark:text-white flex items-center gap-2';
+        tabTos.className = 'doc-tab px-4 py-2.5 text-xs sm:text-sm font-medium rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-2';
+      }
+      clearSearch();
+      renderToc();
+      lucide.createIcons();
+    }
+
+    tabTos.addEventListener('click', () => setTab('tos'));
+    tabPrivacy.addEventListener('click', () => setTab('privacy'));
+
+    // Search and Filtering
+    function clearSearch() {
+      searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
+      searchStats.classList.add('hidden');
+      const clauses = document.querySelectorAll('.legal-clause');
+      clauses.forEach(c => c.classList.remove('hidden'));
+    }
+
+    clearSearchBtn.addEventListener('click', clearSearch);
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.trim().toLowerCase();
+      const activeView = currentTab === 'tos' ? tosView : privacyView;
+      const clauses = activeView.querySelectorAll('.legal-clause');
+
+      if (!query) {
+        clearSearchBtn.classList.add('hidden');
+        searchStats.classList.add('hidden');
+        clauses.forEach(c => c.classList.remove('hidden'));
+        return;
+      }
+
+      clearSearchBtn.classList.remove('hidden');
+      let matches = 0;
+
+      clauses.forEach(clause => {
+        const text = clause.innerText.toLowerCase();
+        if (text.includes(query)) {
+          clause.classList.remove('hidden');
+          matches++;
+        } else {
+          clause.classList.add('hidden');
+        }
+      });
+
+      searchStats.classList.remove('hidden');
+      searchStats.textContent = matches === 1 
+        ? `Found 1 matching section in ${currentTab === 'tos' ? 'Terms of Service' : 'Privacy Policy'}` 
+        : `Found ${matches} matching sections in ${currentTab === 'tos' ? 'Terms of Service' : 'Privacy Policy'}`;
+    });
+
+    // Theme Toggle with LocalStorage persistence
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    function updateThemeIcon() {
+      const isDark = htmlEl.classList.contains('dark');
+      themeBtn.innerHTML = isDark 
+        ? `<i data-lucide="sun" class="w-5 h-5 text-amber-400"></i>` 
+        : `<i data-lucide="moon" class="w-5 h-5"></i>`;
+      lucide.createIcons();
+    }
+
+    themeBtn.addEventListener('click', () => {
+      htmlEl.classList.toggle('dark');
+      const isDark = htmlEl.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateThemeIcon();
+    });
+
+    // Toast Alert
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2400);
+    }
+
+    // Copy Full Text
+    document.getElementById('copyDocBtn').addEventListener('click', () => {
+      const activeEl = currentTab === 'tos' ? tosView : privacyView;
+      const textToCopy = activeEl.innerText;
+      
+      const textArea = document.createElement('textarea');
+      textArea.value = textToCopy;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        document.execCommand('copy');
+        showToast('Full text copied to clipboard!');
+      } catch (err) {
+        showToast('Unable to copy text.');
+      }
+      document.body.removeChild(textArea);
+    });
+
+    // Share / Copy Link
+    document.getElementById('shareBtn').addEventListener('click', () => {
+      const url = window.location.href;
+      const textArea = document.createElement('textarea');
+      textArea.value = url;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        showToast('Page link copied to clipboard!');
+      } catch (err) {
+        showToast('Unable to copy link.');
+      }
+      document.body.removeChild(textArea);
+    });
+
+    // Print
+    document.getElementById('printBtn').addEventListener('click', () => {
+      window.print();
+    });
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      renderToc();
+      updateThemeIcon();
+    });
+  </script>
+</body>
+</html>
